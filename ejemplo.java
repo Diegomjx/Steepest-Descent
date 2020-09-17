@@ -33,6 +33,16 @@ private static double alfa;
                              	
 
                              	break;
+                                case 2: 
+                                try{ 
+                                    System.out.println("valor de x:");  
+                                    initial0[0] = scan.nextDouble();
+                                    System.out.println("valor de y:");  
+                                    initial0[1] = scan.nextDouble();
+                                    Steepest_Descent_F1_variable(initial0);
+
+                                   } catch(Exception e){ option = -1;}
+                                break;
 
                              }
 
@@ -49,12 +59,22 @@ private static double alfa;
                                 	initial0[0] = scan.nextDouble();
                                 	System.out.println("valor de y:");  
                                 	initial0[1] = scan.nextDouble();
-                                	Steepest_Descent_F1_constante(initial0);
+                                	Steepest_Descent_F2_constante(initial0);
 
                                    } catch(Exception e){ option = -1;}
                              	
 
                              	break;
+                                case 2: 
+                                try{ 
+                                    System.out.println("valor de x:");  
+                                    initial0[0] = scan.nextDouble();
+                                    System.out.println("valor de y:");  
+                                    initial0[1] = scan.nextDouble();
+                                    Steepest_Descent_F2_variable(initial0);
+
+                                   } catch(Exception e){ option = -1;}
+                                break;
 
                              }
                 	break;
@@ -109,6 +129,25 @@ private static double alfa;
         System.out.println("(d) Norma: "+norma(gradiante));
         System.out.println("/-------------------------------\n");
     } 
+    public static void Steepest_Descent_F1_variable(double[] initial){
+        double[] gradiante = grad_F1(initial);
+        double k =1;
+        double[] xk = initial;
+        while ( k< 1000 &&  norma(gradiante) > Math.pow(10,-8)) {
+            alfa = 1/k;
+            if(alfa>0)
+                gradiante = grad_F1(xk);
+            xk=Xk(xk, gradiante);
+            k++;
+        }
+        System.out.println("\n/-------------------------------");
+        System.out.println("Numero de iteracion:"+k);
+        System.out.println("xk= ["+xk[0]+","+xk[1]+"]");
+        System.out.println("(c) Direccion: ["+ +gradiante[0]+","+gradiante[1]+"]");
+        System.out.println("Norma: "+norma(gradiante));
+        System.out.println("/-------------------------------\n");
+
+    }
     public static void Steepest_Descent_F2_constante(double[] initial){
     	double[] gradiante = grad_F2(initial);
     	double k =0;
@@ -125,6 +164,25 @@ private static double alfa;
     	System.out.println("(c) Direccion: ["+ +gradiante[0]+","+gradiante[1]+"]");
     	System.out.println("Norma: "+norma(gradiante));
     	System.out.println("/-------------------------------\n");
+
+    }
+    public static void Steepest_Descent_F2_variable(double[] initial){
+        double[] gradiante = grad_F2(initial);
+        double k =1;
+        double[] xk = initial;
+        while ( k< 1000 &&  norma(gradiante) > Math.pow(10,-8)) {
+            alfa = 1/k;
+            if(alfa>0)
+                gradiante = grad_F2(xk);
+            xk=Xk(xk, gradiante);
+            k++;
+        }
+        System.out.println("\n/-------------------------------");
+        System.out.println("Numero de iteracion:"+k);
+        System.out.println("xk= ["+xk[0]+","+xk[1]+"]");
+        System.out.println("(c) Direccion: ["+ +gradiante[0]+","+gradiante[1]+"]");
+        System.out.println("Norma: "+norma(gradiante));
+        System.out.println("/-------------------------------\n");
 
     }
     
