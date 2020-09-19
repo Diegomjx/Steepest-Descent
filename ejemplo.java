@@ -116,74 +116,68 @@ private static double alfa;
     	double[] gradiante = grad_F1(initial);
     	double k =0;
     	double[] xk = initial;
-    	while ( k< 1000 &&  norma(gradiante) > Math.pow(10,-8)) {
+    	while ( k-1< 1000 &&  norma(gradiante) > Math.pow(10,-8)) {
     		if(alfa>0)
     			gradiante = grad_F1(xk);
     		xk=Xk(xk, gradiante);
+            toString(k, xk,gradiante);
     		k++;
     	}
-    	System.out.println("\n/-------------------------------");
-    	System.out.println("(a) Numero de iteracion:"+k);
-    	System.out.println("(b) xk= ["+xk[0]+","+xk[1]+"]");
-    	System.out.println("(c) Direccion: ["+ +gradiante[0]+","+gradiante[1]+"]");
-        System.out.println("(d) Norma: "+norma(gradiante));
-        System.out.println("/-------------------------------\n");
+
     } 
     public static void Steepest_Descent_F1_variable(double[] initial){
         double[] gradiante = grad_F1(initial);
         double k =1;
         double[] xk = initial;
-        while ( k< 1000 &&  norma(gradiante) > Math.pow(10,-8)) {
+        while ( k-1< 1000 &&  norma(gradiante) > Math.pow(10,-8)) {
             alfa = 1/k;
             if(alfa>0)
                 gradiante = grad_F1(xk);
             xk=Xk(xk, gradiante);
+            toString(k, xk,gradiante);
             k++;
         }
-        System.out.println("\n/-------------------------------");
-        System.out.println("Numero de iteracion:"+k);
-        System.out.println("xk= ["+xk[0]+","+xk[1]+"]");
-        System.out.println("(c) Direccion: ["+ +gradiante[0]+","+gradiante[1]+"]");
-        System.out.println("Norma: "+norma(gradiante));
-        System.out.println("/-------------------------------\n");
 
     }
     public static void Steepest_Descent_F2_constante(double[] initial){
     	double[] gradiante = grad_F2(initial);
     	double k =0;
     	double[] xk = initial;
-    	while ( k< 1000 &&  norma(gradiante) > Math.pow(10,-8)) {
+    	while ( k-1< 1000 &&  norma(gradiante) > Math.pow(10,-8)) {
     		if(alfa>0)
     			gradiante = grad_F2(xk);
     		xk=Xk(xk, gradiante);
+            toString(k, xk,gradiante);
     		k++;
     	}
-    	System.out.println("\n/-------------------------------");
-    	System.out.println("Numero de iteracion:"+k);
-    	System.out.println("xk= ["+xk[0]+","+xk[1]+"]");
-    	System.out.println("(c) Direccion: ["+ +gradiante[0]+","+gradiante[1]+"]");
-    	System.out.println("Norma: "+norma(gradiante));
-    	System.out.println("/-------------------------------\n");
+        
+
+    	
 
     }
     public static void Steepest_Descent_F2_variable(double[] initial){
         double[] gradiante = grad_F2(initial);
         double k =1;
         double[] xk = initial;
-        while ( k< 1000 &&  norma(gradiante) > Math.pow(10,-8)) {
+        while ( k-1< 1000 &&  norma(gradiante) > Math.pow(10,-8)) {
             alfa = 1/k;
             if(alfa>0)
                 gradiante = grad_F2(xk);
             xk=Xk(xk, gradiante);
+            toString(k, xk,gradiante);
             k++;
+
         }
+
+    }
+    public static void toString(double k, double[] xk, double[] gradiante){
         System.out.println("\n/-------------------------------");
         System.out.println("Numero de iteracion:"+k);
         System.out.println("xk= ["+xk[0]+","+xk[1]+"]");
-        System.out.println("(c) Direccion: ["+ +gradiante[0]+","+gradiante[1]+"]");
+        System.out.println("(c) Direccion: ["+ +gradiante[0]*-1+","+gradiante[1]*-1+"]");
         System.out.println("Norma: "+norma(gradiante));
         System.out.println("/-------------------------------\n");
-
     }
+
     
 }
